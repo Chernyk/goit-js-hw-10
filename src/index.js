@@ -38,31 +38,36 @@ function checkName(counries, inputName) {
     let nameOfCountry = country.name.common.toUpperCase();
     if (nameOfInput === nameOfCountry) {
       const markup = setMarkupForCountry(country);
-      refs.countryList.innerHTML = '';
+      clearCountryListHTML();
       refs.countryInfo.innerHTML = markup;
       return;
     }
   });
 }
-
+function clearCountryInfoHTML() {
+  refs.countryInfo.innerHTML = '';
+}
+function clearCountryListHTML() {
+  refs.countryList.innerHTML = '';
+}
 function getAndCreateMarkup(countries) {
   if (countries.length > 10) {
-    refs.countryInfo.innerHTML = '';
-    refs.countryList.innerHTML = '';
+    clearCountryInfoHTML();
+    clearCountryListHTML();
     Notify.info('Too many matches found. Please enter a more specific name.');
   } else if (countries.length <= 10 && countries.length > 1) {
     const markup = setMarkupForCountries(countries);
-    refs.countryInfo.innerHTML = '';
+    clearCountryInfoHTML();
     refs.countryList.innerHTML = markup;
     checkName(countries, valueInput);
   } else if (countries.length === 1) {
     const markup = setMarkupForCountry(countries[0]);
-    refs.countryList.innerHTML = '';
+    clearCountryListHTML();
     refs.countryInfo.innerHTML = markup;
   } else {
     Notify.failure('Oops, there is no country with that name');
-    refs.countryInfo.innerHTML = '';
-    refs.countryList.innerHTML = '';
+    clearCountryInfoHTML();
+    clearCountryListHTML();
   }
 }
 
