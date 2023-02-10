@@ -25,14 +25,14 @@ function getLanguages(languages) {
   return element;
 }
 export function setMarkupForCountries(countries) {
-  let coun = [];
+  let result = [];
   countries.forEach(({ flags: { svg }, name: { common } }) => {
-    coun.push(`
+    result.push(`
     <li>
     <img src="${svg}" alt="${common}">
     <h2 class="nameList">${common} </h2>
     </li>
   `);
   });
-  return coun.join('');
+  return result.join('');
 }

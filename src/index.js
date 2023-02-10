@@ -45,7 +45,7 @@ function checkName(counries, inputName) {
   });
 }
 
-function renderPokemonCard(countries) {
+function getAndCreateMarkup(countries) {
   if (countries.length > 10) {
     refs.countryInfo.innerHTML = '';
     refs.countryList.innerHTML = '';
@@ -68,6 +68,6 @@ function renderPokemonCard(countries) {
 
 function run(value) {
   fetchCountries(value)
-    .then(renderPokemonCard)
+    .then(getAndCreateMarkup)
     .catch(error => console.log(error));
 }
