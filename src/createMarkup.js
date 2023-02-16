@@ -13,16 +13,11 @@ export function setMarkupForCountry({
     <div class="info-about-country">
     <p class="info">Capital: <span>${capital}</span></p>
     <p class="info">Population: <span>${population}</span></p>
-    <p class="info">Languages: <span>${getLanguages(languages)}</span></p>
+    <p class="info">Languages: <span>${Object.values(languages).join(
+      ', '
+    )}</span></p>
     </div>
   `;
-}
-function getLanguages(languages) {
-  let element = [];
-  for (const key in languages) {
-    element.push(languages[key]);
-  }
-  return element;
 }
 export function setMarkupForCountries(countries) {
   let result = [];
